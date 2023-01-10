@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <chrono>
 
-  void swap(int * array, size_t i, size_t store) {
+  static void swap(int * array, size_t i, size_t store) {
       int temp = array[i];
       array[i] = array[store];
       array[store] = temp;
   }
 
-  int median(int * array, size_t left, size_t right) {
+  static int median(int * array, size_t left, size_t right) {
         size_t mid = (left + right) / 2;
         if (array[right] < array[left]) {
               swap(array, left, right);
@@ -22,7 +22,7 @@
         return array[right];
   }
 
-  size_t mePartition(int * arr, size_t left, size_t right) {
+  static size_t mePartition(int * arr, size_t left, size_t right) {
         auto pivot = median(arr, left, right);
         auto leftIndex = left - 1;
         auto rightIndex = right;
@@ -52,7 +52,7 @@
         return leftIndex;
   }
 
-  void quickSort(int * array, size_t left, size_t right) {
+  static void quickSort(int * array, size_t left, size_t right) {
           if (left < right) {
                 auto pivot = mePartition(array, left, right);
                 quickSort(array, left, pivot - 1);
